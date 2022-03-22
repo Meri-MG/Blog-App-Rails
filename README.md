@@ -3,7 +3,7 @@
 > The Blog app is a classic example of a blog website. It was created a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
 > The project is following data model below: 
-> ![diagram](https://raw.githubusercontent.com/Meri-MG/BlogApp/setup/blog_app.png)
+> ![diagram](https://raw.githubusercontent.com/Meri-MG/Blog-App-Rails/setup/blog_app.png)
 
 ## Built With
 
