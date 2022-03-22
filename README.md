@@ -2,8 +2,8 @@
 
 > The Blog app is a classic example of a blog website. It was created a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
-The project is following data model below: 
-![diagram](https://raw.githubusercontent.com/Meri-MG/BlogApp/project_setup/blog_app.png)
+> The project is following data model below: 
+> ![diagram](https://raw.githubusercontent.com/Meri-MG/BlogApp/setup/blog_app.png)
 
 ## Built With
 
@@ -30,7 +30,7 @@ The project is following data model below:
 
   ```
   rails s
-
+  ```
   Open browser with `localhost:3000`
 
   
@@ -59,7 +59,7 @@ rubocop
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Meri-MG/Ruby-Group-Capstone/issues).
+Feel free to check the [issues page](https://github.com/Meri-MG/Blog-App-Rails/issues).
 
 ## Show your support
 
@@ -67,9 +67,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Thanks to my morning session partners, coding partners and teammates.
 
 ## 📝 License
 
