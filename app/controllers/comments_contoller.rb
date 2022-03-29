@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def index;
+  def index
     @comments = Comment.all
   end
 

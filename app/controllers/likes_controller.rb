@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
   end
 
-  def index;
+  def index
     @likes = Like.all
   end
 
