@@ -28,8 +28,4 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
   end
-
-  def three_recent_posts
-    @user = User.find(params[:id])
-  end
 end

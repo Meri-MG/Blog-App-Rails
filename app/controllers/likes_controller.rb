@@ -29,7 +29,7 @@ class LikesController < ApplicationController
     @like.destroy
   end
 
-  def three_recent_posts
+  def update_post_count
     @like = Like.find(params[:id])
   end
 end

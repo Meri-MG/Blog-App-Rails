@@ -28,8 +28,4 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
   end
-
-  def three_recent_posts
-    @comment = Comment.find(params[:id])
-  end
 end
