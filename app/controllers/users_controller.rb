@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def index;
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:title, :text))
+    @user = User.new(params.require(:user).permit(:name, :photo, :bio))
   end
 
   def edit
@@ -21,11 +21,15 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(params.require(:user).permit(:title, :text))
+    @user.update(params.require(:user).permit(:name, :photo, :bio))
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+  end
+
+  def three_recent_posts
+    @user = User.find(params[:id])
   end
 end

@@ -30,4 +30,11 @@ class PostsController < ApplicationController
     @post.destroy
   end
 
+  def update_user_count
+  end
+
+  def five_recent_comments
+
+  end
+
 end
