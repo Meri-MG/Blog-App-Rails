@@ -1,1 +1,37 @@
 <h1>Here is a list of posts for a given user</h1>
+
+<div>
+    <img src=<%= @user.photo %> />
+  </div>
+    <div>
+      <div><%= @user.name %></div>
+      <div>Number of posts: <%= @user.posts_counter %></div>
+    </div>
+  <div><%= @user.bio %></div>
+  <% @user.posts.each do |post| %>
+    <%= link_to(user_post_path(@user.id, post.id)) do %>
+    <div>Post #
+    <% end %>
+     <%= post.id %></div>
+     <%= post.text %></div>
+    Comments: <% if post.comments_counter != nil %>
+    <%= post.comments_counter %>
+ <% else %>
+ 0 
+ <% end %>
+    Likes: <% if post.likes_counter != nil %>
+     <%= post.likes_counter %>
+  <% else %>
+  0 
+  <% end %>
+  </div>
+
+  <div> <% post.five_recent_comments.each do |comment| %> 
+    <%= comment.author.name %> : <%= comment.text %>
+    <% end %>
+    </div>
+  <% end %>
+
+<%= link_to 'See all users', users_path(@user) %>
+
+

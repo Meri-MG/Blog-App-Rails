@@ -1,1 +1,28 @@
 <h1>Here is a user</h1>
+
+  <div>
+    <img src=<%= @user.photo %> />
+  </div>
+    <div>
+      <div><%= @user.name %></div>
+      <div>Number of posts: <%= @user.posts_counter %></div>
+    </div>
+  <div><%= @user.bio %></div>
+  <% @user.posts.each do |post| %>
+    <div>Post #
+     <%= post.id %></div>
+     <%= post.text %></div>
+    Comments: <% if post.comments_counter != nil %>
+    <%= post.comments_counter %>
+ <% else %>
+ 0 
+ <% end %>
+    Likes: <% if post.likes_counter != nil %>
+     <%= post.likes_counter %>
+  <% else %>
+  0 
+  <% end %>
+  </div>
+  <% end %>
+
+<%= link_to 'See all posts', user_posts_path(@user) %>

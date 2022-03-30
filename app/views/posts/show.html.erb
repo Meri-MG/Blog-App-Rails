@@ -1,1 +1,24 @@
 <h1>Here is a post</h1>
+    <div>Post # 
+     <%= @post.id %></div>
+     by <%= @post.author.name %>
+     <%= @post.text %></div>
+    Comments: <% if @post.comments_counter != nil %>
+    <%= @post.comments_counter %>
+ <% else %>
+ 0 
+ <% end %>
+    Likes: <% if @post.likes_counter != nil %>
+     <%= @post.likes_counter %>
+  <% else %>
+  0 
+  <% end %>
+  </div>
+
+  <div> <% @post.comments.each do |comment| %> 
+    <%= comment.author.name %> : <%= comment.text %>
+    <% end %>
+    </div>
+
+<%= link_to 'See all posts', user_posts_path(@user) %>
+
