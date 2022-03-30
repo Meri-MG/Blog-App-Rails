@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+@import 'bootstrap';
+
+.nav-link {
+  color: white !important;
+}
+
+.navbar-brand {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  font-weight: bold;
+}
+
+#home-container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.jumbotron {
+  background-image: asset-url('blogImage.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 425px;
+}
+
+.display-4 {
+  padding-top: 10rem !important;
+}
+
+.btn-secondary {
+  width: 150px;
+  padding: 0.5rem;
+}

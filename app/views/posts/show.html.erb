@@ -1,6 +1,7 @@
-<h1>Here is a post</h1>
+<div class="card m-3" style="max-width: 540px;">
+
     <div>Post # 
-     <%= @post.id %></div>
+     <%= @post.id %>
      by <%= @post.author.name %>
      <%= @post.text %></div>
     Comments: <% if @post.comments_counter != nil %>
@@ -14,11 +15,14 @@
   0 
   <% end %>
   </div>
+  </div>
+  <div class="card m-3" style="max-width: 540px;">
 
   <div> <% @post.comments.each do |comment| %> 
     <%= comment.author.name %> : <%= comment.text %>
     <% end %>
     </div>
+    </div>
 
-<%= link_to 'See all posts', user_posts_path(@user) %>
+<%= link_to 'See all posts', user_posts_path(@user), class: "btn btn-secondary mx-3 mb-3" %>
 
