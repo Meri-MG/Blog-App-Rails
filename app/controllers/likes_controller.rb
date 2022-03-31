@@ -13,6 +13,18 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.new(params.require(:like).permit(:name, :photo, :bio))
+    @post.author = User.first
+    respond_to do |format|
+      format.html do
+    if @post.save
+      flash[:notice] = "Post was created successfully."
+      redirect_to user_post_path(User.first.id, @post.id)
+      # redirect_to @posts
+    else
+      render 'new', status: :unprocessable_entity 
+    end
+  end
+end
   end
 
   def edit

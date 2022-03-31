@@ -12,7 +12,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params.require(:comment).permit(:name, :photo, :bio))
+    @comment = Comment.new(params.require(:comment).permit(:text))
+    @post.author = User.first
+    respond_to do |format|
+      format.html do
+    if @comment.save
+      flash[:notice] = "Comment was created successfully."
+      redirect_to user_post_path(User.first.id, @comment.id)
+    else
+      render 'new', status: :unprocessable_entity 
+    end
+  end
+end
   end
 
   def edit
