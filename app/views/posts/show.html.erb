@@ -24,7 +24,7 @@
     </div>
     </div>
 
-    <%= form_with url: user_posts_path, scope: :post, class: "col-3 shadow p-3 mb-3 mx-3 bg-info rounded", local: true do |f| %>
+    <%= form_with url: "/posts/#{@post.id}/comments", scope: :comment, class: "col-3 shadow p-3 mb-3 mx-3 bg-info rounded", local: true do |f| %>
       <div class="form-group row mt-3">
         <%= f.label 'Write a comment', class: "col-form-label text-light" %>
         <div class=""> 
@@ -36,7 +36,7 @@
       </div>
     <% end %>
 
-    <%= form_with url: user_posts_path, scope: :post, class: "col-3 shadow p-1 mb-3 mx-3 bg-info rounded", local: true do |f| %>
+    <%= form_with url: "/posts/#{@post.id}/likes", scope: :like, class: "col-3 shadow p-1 mb-3 mx-3 bg-info rounded", local: true do |f| %>
       <div class="form-group row justify-content-center">
         <%= f.submit 'Like', class: "btn btn-outline-light" %>
       </div>
