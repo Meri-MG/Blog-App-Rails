@@ -5,7 +5,7 @@ RSpec.describe Post, type: :model do
 
   before { subject.save }
 
-  describe "Associations" do
+  describe 'Associations' do
     it { should belong_to(:author).without_validating_presence }
   end
 
