@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.author
     @comments = @post.comments.includes(:author)
+    @likes = @post.likes.includes(:author)
   end
 
   def index
@@ -17,6 +18,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(new_post_params)
     @post.author = User.first
+    @post.likes_counter = 0
+    @post.comments_counter = 0
     respond_to do |format|
       format.html do
         if @post.save
