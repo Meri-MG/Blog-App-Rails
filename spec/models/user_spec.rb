@@ -5,6 +5,10 @@ RSpec.describe User, type: :model do
 
   before { subject.save }
 
+  it 'should be valid' do
+    expect(subject).to be_valid
+  end
+
   it 'isn\'t valid without a name' do
     subject.name = nil
     expect(subject).to_not be_valid

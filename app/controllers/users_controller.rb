@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.includes(:post)
+
   end
 
   def index
     @users = User.all
+    @posts = @user.posts.includes(:post)
   end
 
   def new

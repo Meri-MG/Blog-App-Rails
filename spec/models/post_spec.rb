@@ -9,6 +9,10 @@ RSpec.describe Post, type: :model do
     it { should belong_to(:author).without_validating_presence }
   end
 
+  it 'should not be valid, author should exist' do
+    expect(subject).to_not be_valid
+  end
+
   it 'isn\'t valid with characters less than 3' do
     subject.title = 'Be'
     expect(subject).to_not be_valid
