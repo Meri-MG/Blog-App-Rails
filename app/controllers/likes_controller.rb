@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :current_user, only: [:create]
+
   def show
     @like = Like.find(params[:id])
   end
@@ -12,7 +14,13 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = Like.new(params.require(:like).permit(:name, :photo, :bio))
+    @post = Post.find(params[:post_id])
+    new_like = current_user.likes.new(
+      author_id: current_user.id,
+      post_id: @post.id
+    )
+
+    redirect_to "/users/#{@post.author_id}/posts/#{@post.id}", notice: 'Like created' if new_like.save
   end
 
   def edit

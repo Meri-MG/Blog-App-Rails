@@ -15,7 +15,19 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:title, :text))
+    @post = Post.new(new_post_params)
+    @post.author = User.first
+    respond_to do |format|
+      format.html do
+        if @post.save
+          flash[:notice] = 'Post was created successfully.'
+          redirect_to user_post_path(User.first.id, @post.id)
+          # redirect_to @posts
+        else
+          render 'new', status: :unprocessable_entity
+        end
+      end
+    end
   end
 
   def edit
@@ -30,5 +42,11 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+  end
+
+  private
+
+  def new_post_params
+    params.require(:post).permit(:title, :text)
   end
 end

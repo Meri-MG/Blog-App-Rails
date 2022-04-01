@@ -43,7 +43,12 @@
   padding-top: 10rem !important;
 }
 
-.btn-secondary {
+.btn-secondary,
+.btn-outline-light {
   width: 150px;
   padding: 0.5rem;
+}
+
+.mb-3 {
+  text-align: center;
 }
