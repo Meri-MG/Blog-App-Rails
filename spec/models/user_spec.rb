@@ -18,9 +18,19 @@ RSpec.describe User, type: :model do
     expect(subject.posts_counter).to be_integer
   end
 
-  # it 'the  to be an integer' do
-  #   subject.three_recent_posts = 0
-  #   expect(subject.posts_counter).to be_integer
-  # end
+  it 'the posts_counter to be greater or equal to zero' do
+    subject.posts_counter = nil
+    expect(subject).to_not be_valid
+  end
 
+  it 'the posts_counter to be greater or equal to zero' do
+    subject.posts_counter = -5
+    expect(subject).to_not be_valid
+  end
+
+  describe 'Should test methods in user model' do
+    it 'returns the recent three posts' do
+      expect(subject.three_recent_posts).to eq(subject.posts.last(3))
+    end
+  end
 end

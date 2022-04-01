@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  subject { Post.new(title: 'A post', text: 'Post text') }
-  # , comments_counter: 3, likes_counter: 1
+  subject { Post.new(title: 'A post', text: 'Post text', comments_counter: 3, likes_counter: 1) }
 
   before { subject.save }
 
@@ -21,12 +20,26 @@ RSpec.describe Post, type: :model do
   end
 
   it 'the likes_counter to be an integer' do
-    subject.likes_counter = 3
     expect(subject.likes_counter).to be_integer
   end
 
   it 'the comments_counter to be an integer' do
-    subject.comments_counter = 0
     expect(subject.comments_counter).to be_integer
+  end
+
+  it 'the comments_counter to be equal or greater than zero' do
+    subject.comments_counter = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'the comments_counter to be equal or greater than zero' do
+    subject.comments_counter = -1
+    expect(subject).to_not be_valid
+  end
+
+  describe 'Should test methods in post model' do
+    it 'returns the recent five comments' do
+      expect(subject.five_recent_comments).to eq(subject.comments.last(5))
+    end
   end
 end
