@@ -21,7 +21,7 @@ class LikesController < ApplicationController
     )
 
     redirect_to "/users/#{@post.author_id}/posts/#{@post.id}", notice: 'Like created' if new_like.save
-end
+  end
 
   def edit
     @like = Like.find(params[:id])
