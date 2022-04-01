@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params.require(:user).permit(:name, :photo, :bio))
+    if @user.save
+      flash[:notice] = "User was created successfully."
+      redirect_to @user
+    else
+      render 'new', status: :unprocessable_entity 
+    end
   end
 
   def edit
