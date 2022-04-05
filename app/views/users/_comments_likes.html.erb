@@ -1,21 +1,21 @@
 <% @user.posts.each do |post| %>
-    <div class="card mb-3 mx-3" style="max-width: 540px;">
-      <div>Post #
-        <%= post.id %></div>
-        <%= post.text %>
-        <div> Comments: <% if post.comments_counter != nil %>
+  <div class="card mb-3 mx-3" style="max-width: 540px;">
+    <div>Post #
+      <%= post.id %></div>
+      <%= post.text %>
+      <div> Comments: <% if post.comments_counter != nil %>
         <%= post.comments_counter %>
-        <% else %>
+      <% else %>
         0 
-        <% end %>
-        </div>
-        <div>
-        Likes: <% if post.likes_counter != nil %>
-        <%= post.likes_counter %>
-        <% else %>
-        0 
-        <% end %>
-        </div>
+      <% end %>
+      </div>
+    <div>
+    Likes: <% if post.likes_counter != nil %>
+      <%= post.likes_counter %>
+    <% else %>
+      0 
+    <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>

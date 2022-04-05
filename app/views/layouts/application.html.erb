@@ -11,15 +11,17 @@
   </head>
 
   <body class="d-flex flex-column min-vh-100">
-  <header>
-    <%= render 'layouts/navigation' %>
-    <%= render 'layouts/alerts' %>
+    <header>
+      <%= render 'layouts/navigation' %>
+      <%= render 'layouts/alerts' %>
     </header>
     <main>
-    <div id="page-content" class="container">
-      <%= yield %>
-    </div>
+      <div id="page-content" class="container">
+        <%= yield %>
+      </div>
     </main>
-    <%= render 'layouts/footer' %>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
