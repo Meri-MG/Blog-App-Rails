@@ -13,7 +13,7 @@
   </div>
     <% @user.posts.each do |post| %>
   <%= link_to(user_post_path(@user.id, post.id)) do %> 
-      <div class="card mb-3 mx-3" style="max-width: 540px;">
+      <div class="card mb-3" style="max-width: 540px;">
         <div>Post #
           <%= post.id %></div>
           <%= post.text %>
@@ -33,7 +33,7 @@
         </div>
       </div>
     <% end %>
-    <div class="card mb-3 mx-3 flex-column" style="max-width: 540px;">
+    <div class="card mb-3 flex-column" style="max-width: 540px;">
     <div class="d-flex flex-column"> <% post.five_recent_comments.each do |comment| %> 
       <%= comment.author.name %> : <%= comment.text %>
       <% end %>
@@ -41,4 +41,6 @@
       </div>
   <% end %>
   
-  <%= link_to 'See all users', users_path(@user), class: "btn btn-secondary mx-3 mb-3"%>
+<div class="container">
+  <%= link_to 'See all users', users_path(@user), class: "btn btn-secondary mb-3"%>
+  </div>

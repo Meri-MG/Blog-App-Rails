@@ -10,16 +10,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="d-flex flex-column">
+  <body class="d-flex flex-column min-vh-100">
   <header>
     <%= render 'layouts/navigation' %>
     <%= render 'layouts/alerts' %>
     </header>
     <main>
-    <div id="page-content">
+    <div id="page-content" class="container">
       <%= yield %>
     </div>
-    </main>r
+    </main>
     <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @posts = @user.posts.includes(:post)
   end
 
   def new
