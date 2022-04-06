@@ -12,14 +12,10 @@
         <li class="nav-item">
           <%= link_to 'Users', users_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
       <% if current_user %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            <%= current_user.name %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
@@ -28,6 +24,7 @@
             <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
+      </ul>
       <% else %>
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
         <li class="nav-item">
