@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @posts = @user.posts.includes(:post)
   end
 
   def new
@@ -15,6 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params.require(:user).permit(:name, :photo, :bio))
+    @user.posts_counter = 0
     if @user.save
       flash[:notice] = 'User was created successfully.'
       redirect_to @user

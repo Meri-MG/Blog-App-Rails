@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         if @comment.save
-          flash[:success] = 'Comment was created successfully!'
+          flash[:notice] = 'Thanks for your comment!'
           redirect_to user_post_path(current_user.id, Post.find(params[:post_id]))
         else
           render :new, status: :unprocessable_entity

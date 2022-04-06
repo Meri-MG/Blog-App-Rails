@@ -10,11 +10,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="d-flex flex-column">
-    <%= render 'layouts/navigation' %>
-    <div id="page-content">
-      <%= yield %>
-    </div>
-    <%= render 'layouts/footer' %>
+  <body class="d-flex flex-column min-vh-100">
+    <header>
+      <%= render 'layouts/navigation' %>
+      <%= render 'layouts/alerts' %>
+    </header>
+    <main>
+      <div id="page-content" class="container">
+        <%= yield %>
+      </div>
+    </main>
+    <footer id="sticky-footer" class="mt-auto py-4 bg-dark text-white">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
