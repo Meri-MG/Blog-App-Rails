@@ -36,12 +36,14 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.update(params.require(:comment).permit(:name, :photo, :bio))
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
+    comment = Comment.find(params[:id])
+    comment.post.decrement!(comments_counter)
+    comment.destroy
+    flash[:notice] = 'Comment was deleted successfully.'
+    redirect_to user_comment_path
   end
 
   private
