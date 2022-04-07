@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -15,7 +13,7 @@ class Ability
       can :destroy, Post
       can :destroy, Comment
     end
-    
+
     can :read, :all
     can :manage, Post, author_id: user.id
     can :manage, Comment, author_id: user.id
