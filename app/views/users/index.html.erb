@@ -3,7 +3,11 @@
     <%= link_to(user) do %>
       <div class="row g-0">
         <div class="col-md-4">
-          <img src=<%= user.photo %> class="img-fluid rounded-start" alt="...">
+          <% if user.photo? %>
+            <img src=<%= user.photo %> class="img-fluid rounded-start" alt="...">
+          <% else %>
+            <%= image_tag "avatar.png", class: "img-fluid rounded-start" %>
+          <% end %>
         </div>
         <div class="col-md-8">
           <div class="card-body">

@@ -1,44 +1,69 @@
-<div class="card mt-3" style="max-width: 540px;">
-
-    <div>Post # 
-     <%= @post.id %>
-     by <%= @post.author.name %>
-     <%= @post.text %></div>
-    Comments: <% if @post.comments_counter != nil %>
-    <%= @post.comments_counter %>
- <% else %>
- 0 
- <% end %>
-    Likes: <% if @post.likes_counter != nil %>
-     <%= @post.likes_counter %>
-  <% else %>
-  0 
-  <% end %>
-  </div>
-  </div>
-  <div class="card mt-3" style="max-width: 540px;">
-    <div> <% @post.comments.each do |comment| %> 
-      <%= comment.author.name %> : <%= comment.text %>
+<div class="card mt-3 p-3" style="max-width: 540px;">
+  <div>Post # 
+    <%= @post.id %>
+      by <%= @post.author.name %>
+    </div>
+    <div>
+      <%= @post.text %>
+    </div>
+    <div class="col-2 d-flex justify-content-between">
+      <div class="col-4 p-1 mb-3">
+        <i class="fa-solid fa-comment"></i>
+      </div>
+    <div class="col-4 p-1 mb-3">
+      <% if @post.comments_counter != nil %>
+        <%= @post.comments_counter %>
+      <% else %>
+        0 
       <% end %>
     </div>
+    <%= form_with url: "/posts/#{@post.id}/likes", scope: :like, class: "col-4 p-1 mb-3", local: true do |f| %>
+      <div class="form-group row justify-content-center">
+        <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-heart mx-1 btn', onclick: 'this.parentNode.submit()' %>
+      </div>
+    <% end %>
+    <div class="col-4 p-1 mb-3">
+      <% if @post.likes_counter != nil %>
+        <%= @post.likes_counter %>
+      <% else %>
+        0 
+      <% end %>
+    </div>
+    <div>
+    <% unless current_user.nil? || cannot?(:destroy, @post) %>
+      <%= form_with url: "/users/#{@user.id}/posts/#{@post.id}/delete", class: "col-4 p-1 mb-3", method: :delete do |f| %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-trash-can mx-1 btn', onclick: 'Rails.fire(this.parentNode, \'submit\')' %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
+  <div > <% @post.comments.each do |comment| %> 
+    <div class="d-flex flex-row justify-content-between align-items-center card p-3 mt-3 mb-3 text-info" style="max-width: 540px;">
+      <div><%= comment.author.name %> : <%= comment.text %></div>
+      <% unless current_user.nil? || cannot?(:destroy, comment) %>
+        <div>
+          <%= form_with url: "/comments/delete", class: "p-1", method: :delete do |f| %>
+            <%= f.hidden_field :comment_id, value: comment.id %>
+            <%= button_to '', '#', class: 'fa-solid fa-trash-can btn', onclick: 'Rails.fire(this.parentNode, \'submit\')' %>
+          <% end %>
+        </div>
+    <% end %>
+    </div>
+  <% end %>
   </div>
 
-  <%= form_with url: "/posts/#{@post.id}/comments", scope: :comment, class: "col-3 shadow p-3 mb-3 bg-info rounded", local: true do |f| %>
-    <div class="form-group row mt-3">
-      <%= f.label 'Write a comment', class: "col-form-label text-light" %>
-    <div class=""> 
-      <%= f.text_area :text, rows: 5, class: "form-control shadow rounded", placeholder: "Enter your text here" %>
-    </div>
-    </div>
-    <div class="form-group row justify-content-center">
-      <%= f.submit 'Comment', class: "btn btn-outline-light mt-3" %>
-    </div>
-  <% end %>
+<%= form_with url: "/posts/#{@post.id}/comments", scope: :comment, class: "col-3 shadow p-3 mb-3 bg-info rounded", local: true do |f| %>
+  <div class="form-group row mt-3">
+    <%= f.label 'Write a comment', class: "col-form-label text-light" %>
+  <div> 
+    <%= f.text_area :text, rows: 5, class: "form-control shadow rounded", placeholder: "Enter your text here" %>
+  </div>
+  </div>
+  <div class="form-group row justify-content-center">
+    <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-comment mx-1 btn btn-outline-light mt-3', onclick: 'this.parentNode.submit()' %>
+  </div>
+<% end %>
 
-  <%= form_with url: "/posts/#{@post.id}/likes", scope: :like, class: "col-3 shadow p-1 mb-3 bg-info rounded", local: true do |f| %>
-    <div class="form-group row justify-content-center">
-      <%= f.submit 'Like', class: "btn btn-outline-light" %>
-    </div>
-  <% end %>
-
-<%= link_to 'See all posts', user_posts_path(@user), class: "btn btn-secondary mb-3" %>
+<%= link_to 'Show all posts', user_posts_path(@user), class: "btn btn-secondary mb-3" %>

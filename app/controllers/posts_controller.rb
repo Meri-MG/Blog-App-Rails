@@ -24,7 +24,6 @@ class PostsController < ApplicationController
         if @post.save
           flash[:notice] = 'Post was created successfully.'
           redirect_to user_post_path(current_user.id, @post.id)
-          # redirect_to @posts
         else
           render 'new', status: :unprocessable_entity
         end
@@ -42,8 +41,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    post = Post.find(params[:post_id])
+    post.author.decrement!(:posts_counter)
+    post.destroy
+    flash[:notice] = 'Post was deleted successfully.'
+    redirect_to "/users/#{post.author.id}/posts"
   end
 
   private
