@@ -39,11 +39,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.post.decrement!(comments_counter)
+    comment = Comment.find(params[:comment_id])
+    comment.post.decrement!(:comments_counter)
     comment.destroy
     flash[:notice] = 'Comment was deleted successfully.'
-    redirect_to user_comment_path
+    redirect_to request.path
   end
 
   private

@@ -5,8 +5,12 @@
 
   <%= render 'comments_likes' %>
 
-  <%= link_to 'See all posts', user_posts_path(@user), class: "btn btn-secondary mx-3 mb-3"%>
-  <%= link_to 'Create new post', new_user_post_path(@user), class: "btn btn-secondary mb-3" %>
+  <%= link_to 'Show all posts', user_posts_path(@user), class: "btn btn-secondary mb-3"%>
+  <% if @user == current_user %>
+    <% unless current_user.nil? || cannot?(:create, Post) %>
+      <%= link_to 'Create new post', new_user_post_path(@user), class: "btn btn-secondary mb-3" %>
+    <% end %>
+  <% end %>
 </div>
 
 

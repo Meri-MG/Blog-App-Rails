@@ -9,4 +9,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
   end
   root 'pages#home'
+
+  delete '/comments/delete', to: 'comments#destroy'
+  delete '/users/:user_id/posts/:id/delete', to: 'posts#destroy'
 end
