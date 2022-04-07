@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Users", type: :system do
-  describe 'Index form' do
+  describe 'Index Page' do
     let!(:users) do
       users = [
         User.create!(
