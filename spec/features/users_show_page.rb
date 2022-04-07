@@ -1,10 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :system do
-    describe 'Show Page' do 
-      let!(:user) do
-        visit new_user_session_path
-        user = User.create(
+# rubocop:disable Metrics/BlockLength
+
+RSpec.feature 'Users', type: :system do
+  describe 'Show Page' do
+    let!(:user) do
+      visit new_user_session_path
+      user = User.create(
         name: 'Meri',
         id: 1,
         email: 'meri2@example.com',
@@ -13,7 +15,7 @@ RSpec.feature "Users", type: :system do
         confirmed_at: Time.now
       )
 
-      4.times do |post| 
+      4.times do |_post|
         Post.create(
           author: user,
           title: 'my post',
@@ -25,18 +27,18 @@ RSpec.feature "Users", type: :system do
       fill_in 'user_email', with: 'meri2@example.com'
       fill_in 'user_password', with: 'password'
       click_button 'Log in'
-      visit '/users/#{user.id}'
+      visit "/users/#{user.id}"
       user
     end
 
-    it "should check the content of user attributes on the page" do
+    it 'should check the content of user attributes on the page' do
       expect(page).to have_content(user.name)
       expect(page).to have_content(user.bio)
       expect(page).to have_content(user.posts_counter)
       page.should have_selector('img')
     end
 
-    it "should check the content of post attributes on the page" do
+    it 'should check the content of post attributes on the page' do
       click_link user.posts_counter
       expect(page).to have_current_path user_path(user.id)
       recent_posts = user.three_recent_posts
@@ -50,7 +52,9 @@ RSpec.feature "Users", type: :system do
       expect(page).to have_current_path user_path(user.id)
       expect(page).to have_content('Show all posts')
       click_link 'Show all posts'
-      expect(page).to have_current_path ('/users/1/posts')
+      expect(page).to have_current_path('/users/1/posts')
     end
   end
 end
+
+# rubocop:enable Metrics/BlockLength

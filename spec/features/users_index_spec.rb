@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :system do
+# rubocop:disable Metrics/BlockLength
+
+RSpec.feature 'Users', type: :system do
   describe 'Index Page' do
     let!(:users) do
       users = [
@@ -22,15 +24,6 @@ RSpec.feature "Users", type: :system do
         )
       ]
       visit new_user_session_path
-      user1 = User.create(
-        name: 'Meri',
-        id: 1,
-        email: 'meri2@example.com',
-        password: 'password',
-        posts_counter: 4,
-        photo: 'avatar.png',
-        confirmed_at: Time.now
-      )
       fill_in 'user_email', with: 'meri2@example.com'
       fill_in 'user_password', with: 'password'
       click_button 'Log in'
@@ -45,8 +38,10 @@ RSpec.feature "Users", type: :system do
         page.should have_selector('img')
         click_link user.posts_counter
         expect(page).to have_current_path user_path(user.id)
-        visit '/users/#{user.id}'
+        visit '/users'
       end
-    end 
+    end
   end
 end
+
+# rubocop:enable Metrics/BlockLength
