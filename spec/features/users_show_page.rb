@@ -39,7 +39,6 @@ RSpec.feature 'Users', type: :system do
     end
 
     it 'should check the content of post attributes on the page' do
-      click_link user.posts_counter
       expect(page).to have_current_path user_path(user.id)
       recent_posts = user.three_recent_posts
       recent_posts.each do |post|
@@ -48,7 +47,6 @@ RSpec.feature 'Users', type: :system do
     end
 
     it "should check the show all posts button and it's interactions" do
-      click_link user.posts_counter
       expect(page).to have_current_path user_path(user.id)
       expect(page).to have_content('Show all posts')
       click_link 'Show all posts'

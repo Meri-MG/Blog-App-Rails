@@ -30,7 +30,6 @@ RSpec.feature 'Users', type: :system do
       fill_in 'user_password', with: 'password'
       click_button 'Log in'
       visit "/users/#{user.id}"
-      click_link user.posts_counter
       visit user_path(user)
       click_link 'Show all posts'
       click_link 'my post text'
