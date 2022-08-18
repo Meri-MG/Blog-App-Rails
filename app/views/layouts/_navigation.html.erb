@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <div class="container-fluid">
-    <%= link_to 'BlogApp', root_path, class: "navbar-brand text-white" %>
+    <%= link_to "BlogApp", root_path, class: "navbar-brand text-white" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to 'Home', root_path, class: "nav-link active" %>
+          <%= link_to "Home", root_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Users', users_path, class: "nav-link" %>
+          <%= link_to "Users", users_path, class: "nav-link" %>
         </li>
       <% if current_user %>
         <li class="nav-item dropdown">
@@ -21,17 +21,17 @@
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Settings</a>
             <div class="dropdown-divider"></div>
-            <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       </ul>
       <% else %>
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to 'Log in', new_user_session_path, class: "nav-link active" %>
+          <%= link_to "Log in", new_user_session_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
         </li>
         </ul>
       <% end %>
