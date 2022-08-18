@@ -19,7 +19,7 @@
     </div>
     <%= form_with url: "/posts/#{@post.id}/likes", scope: :like, class: "col-4 p-1 mb-3", local: true do |f| %>
       <div class="form-group row justify-content-center">
-        <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-heart mx-1 btn', onclick: 'this.parentNode.submit()' %>
+        <%= button_to "", "#", class: "m-0 p-0 fa-solid fa-heart mx-1 btn", onclick: "this.parentNode.submit()" %>
       </div>
     <% end %>
     <div class="col-4 p-1 mb-3">
@@ -33,7 +33,7 @@
     <% unless current_user.nil? || cannot?(:destroy, @post) %>
       <%= form_with url: "/users/#{@user.id}/posts/#{@post.id}/delete", class: "col-4 p-1 mb-3", method: :delete do |f| %>
         <%= f.hidden_field :post_id, value: @post.id %>
-        <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-trash-can mx-1 btn', onclick: 'Rails.fire(this.parentNode, \'submit\')' %>
+        <%= button_to "", "#", class: "m-0 p-0 fa-solid fa-trash-can mx-1 btn", onclick: 'Rails.fire(this.parentNode, \'submit\')' %>
       <% end %>
     <% end %>
     </div>
@@ -46,7 +46,7 @@
         <div>
           <%= form_with url: "/comments/delete", class: "p-1", method: :delete do |f| %>
             <%= f.hidden_field :comment_id, value: comment.id %>
-            <%= button_to '', '#', class: 'fa-solid fa-trash-can btn', onclick: 'Rails.fire(this.parentNode, \'submit\')' %>
+            <%= button_to "", "#", class: "fa-solid fa-trash-can btn", onclick: 'Rails.fire(this.parentNode, \'submit\')' %>
           <% end %>
         </div>
     <% end %>
@@ -56,14 +56,14 @@
 
 <%= form_with url: "/posts/#{@post.id}/comments", scope: :comment, class: "col-3 shadow p-3 mb-3 bg-info rounded", local: true do |f| %>
   <div class="form-group row mt-3">
-    <%= f.label 'Write a comment', class: "col-form-label text-light" %>
+    <%= f.label "Write a comment", class: "col-form-label text-light" %>
   <div> 
     <%= f.text_area :text, rows: 5, class: "form-control shadow rounded", placeholder: "Enter your text here" %>
   </div>
   </div>
   <div class="form-group row justify-content-center">
-    <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-comment mx-1 btn btn-outline-light mt-3', onclick: 'this.parentNode.submit()' %>
+    <%= button_to "", "#", class: "m-0 p-0 fa-solid fa-comment mx-1 btn btn-outline-light mt-3", onclick: "this.parentNode.submit()" %>
   </div>
 <% end %>
 
-<%= link_to 'Show all posts', user_posts_path(@user), class: "btn btn-secondary mb-3" %>
+<%= link_to "Show all posts", user_posts_path(@user), class: "btn btn-secondary mb-3" %>
